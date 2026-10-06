@@ -14,7 +14,7 @@ export const personJsonLd = () => ({
   alternateName: person.username,
   jobTitle: "Mentora de Oratória",
   description: person.description,
-  image: absoluteUrl(media.profile.src),
+  image: absoluteUrl(media.ogProfile.src),
   url: `${siteUrl}/`,
   sameAs: [person.instagramUrl],
 });

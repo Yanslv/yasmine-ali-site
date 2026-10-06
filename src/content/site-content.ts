@@ -120,12 +120,13 @@ export const media = {
     alt: "Yasmine Ali, de blazer branco, fala para a câmera com as mãos unidas e o texto “5 hábitos que estão te deixando exausto”.",
     focus: "50% 72%",
   },
-  og01: {
-    src: "/assets/asset_og_01.webp",
-    fallbackSrc: "/assets/asset_og_01.jpg",
-    width: 1200,
-    height: 630,
-    alt: "Capa sobre cinco motivos para criar o hábito da leitura.",
+  /* Imagem de compartilhamento: foto de perfil ampliada de 150 para 400 px
+     (mínimo de 200 px exigido por Facebook, WhatsApp e LinkedIn). */
+  ogProfile: {
+    src: "/assets/asset_profile_og.jpg",
+    width: 400,
+    height: 400,
+    alt: "Retrato frontal de Yasmine Ali usando camisa clara sobre fundo neutro quente.",
   },
 } satisfies Record<string, MediaAsset>;
 
@@ -736,7 +737,7 @@ export const seo = {
     title: "Yasmine Ali | Clareza, presença e autenticidade",
     description:
       "Conteúdos e caminhos para desenvolver sua expressão com mais clareza, presença e autenticidade.",
-    image: media.og01,
+    image: media.ogProfile,
   },
   twitter: {
     title: "Yasmine Ali | Oratória, clareza e presença",

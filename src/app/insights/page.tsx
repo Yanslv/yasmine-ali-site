@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { ArrowUpRight, Plus } from "@phosphor-icons/react/dist/ssr";
-import { faq, insightsPage, media, seo } from "@/content/site-content";
+import { faq, insightsPage, seo } from "@/content/site-content";
 import { hasSiteUrl } from "@/lib/site";
 import { faqJsonLd } from "@/lib/structured-data";
 import { MotionRoot } from "@/components/motion-root";
@@ -18,7 +18,14 @@ export const metadata: Metadata = {
     url: "/insights",
     type: "website",
     locale: "pt_BR",
-    images: [{ url: media.og01.src, width: media.og01.width, height: media.og01.height, alt: media.og01.alt }],
+    images: [
+      {
+        url: seo.openGraph.image.src,
+        width: seo.openGraph.image.width,
+        height: seo.openGraph.image.height,
+        alt: seo.openGraph.image.alt,
+      },
+    ],
   },
 };
 

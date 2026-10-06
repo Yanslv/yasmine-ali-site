@@ -30,19 +30,13 @@ const plexMono = IBM_Plex_Mono({
   display: "swap",
 });
 
+const shareImage = seo.openGraph.image;
 const ogImages = [
   {
-    url: media.og01.src,
-    width: media.og01.width,
-    height: media.og01.height,
-    alt: media.og01.alt,
-    type: "image/webp",
-  },
-  {
-    url: media.og01.fallbackSrc,
-    width: media.og01.width,
-    height: media.og01.height,
-    alt: media.og01.alt,
+    url: shareImage.src,
+    width: shareImage.width,
+    height: shareImage.height,
+    alt: shareImage.alt,
     type: "image/jpeg",
   },
 ];
@@ -65,10 +59,11 @@ export const metadata: Metadata = {
     images: ogImages,
   },
   twitter: {
-    card: "summary_large_image",
+    // Imagem quadrada: "summary" evita o corte 2:1 do card grande.
+    card: "summary",
     title: seo.twitter.title,
     description: seo.twitter.description,
-    images: [{ url: media.og01.src, alt: media.og01.alt }],
+    images: [{ url: shareImage.src, alt: shareImage.alt }],
   },
   icons: {
     icon: [{ url: media.profile.fallbackSrc, type: "image/jpeg" }],
