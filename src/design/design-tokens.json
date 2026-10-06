@@ -1,0 +1,106 @@
+{
+  "meta": {
+    "archetype": "Glass Aurora quente e editorial",
+    "seed": 1286,
+    "username": "euyasmineali",
+    "source_language": "pt-BR"
+  },
+  "colors": {
+    "background": "#F7F3ED",
+    "surface": "#FFFDF9",
+    "surfaceAlt": "#EFE8DE",
+    "text": "#292522",
+    "textMuted": "#665F59",
+    "primary": "#6B4B3E",
+    "primaryContrast": "#FFFDF9",
+    "secondary": "#A8A89A",
+    "accent": "#A35D48",
+    "border": "#D8CEC2",
+    "overlay": "rgba(41,37,34,0.52)"
+  },
+  "gradients": {
+    "auroraWarm": "linear-gradient(135deg, #F7F3ED 0%, #EFE8DE 46%, #A8A89A 100%)",
+    "accentGlow": "radial-gradient(circle at 70% 20%, rgba(163,93,72,0.20), transparent 42%)"
+  },
+  "typography": {
+    "display": {
+      "family": "Fraunces",
+      "weights": [
+        500,
+        600
+      ],
+      "fallback": "Georgia, Times New Roman, serif"
+    },
+    "body": {
+      "family": "DM Sans",
+      "weights": [
+        400,
+        500,
+        600,
+        700
+      ],
+      "fallback": "Inter, Arial, sans-serif"
+    },
+    "detail": {
+      "family": "IBM Plex Mono",
+      "weights": [
+        500
+      ],
+      "fallback": "ui-monospace, SFMono-Regular, Menlo, monospace"
+    },
+    "scale": {
+      "h1": "clamp(3.25rem, 8vw, 8.5rem)",
+      "h2": "clamp(2.25rem, 5vw, 5rem)",
+      "h3": "clamp(1.5rem, 2.5vw, 2.25rem)",
+      "body": "clamp(1rem, 1.15vw, 1.125rem)",
+      "small": "0.8125rem"
+    },
+    "lineHeight": {
+      "display": 0.92,
+      "heading": 0.98,
+      "body": 1.55
+    }
+  },
+  "radii": {
+    "card": "24px",
+    "button": "999px",
+    "image": "28px",
+    "tag": "999px"
+  },
+  "spacing": {
+    "base": "4px",
+    "scale": [
+      "4px",
+      "8px",
+      "12px",
+      "16px",
+      "24px",
+      "32px",
+      "48px",
+      "64px",
+      "96px",
+      "128px"
+    ]
+  },
+  "shadows": {
+    "card": "0 20px 60px rgba(41,37,34,0.10)",
+    "focus": "0 0 0 3px #A35D48"
+  },
+  "animation": {
+    "signature": "image-scale-mask",
+    "durationFast": "0.22s",
+    "durationBase": "0.6s",
+    "durationSlow": "1.1s",
+    "ease": "power3.out",
+    "scrub": 0.8,
+    "stagger": 0.08,
+    "reducedMotion": "fade-only-no-pin-no-parallax-no-marquee"
+  },
+  "icons": {
+    "library": "@phosphor-icons/react",
+    "style": "duotone",
+    "weight": "regular",
+    "defaultSize": "20px",
+    "strokeApprox": "1.5px"
+  }
+}

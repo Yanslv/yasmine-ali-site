@@ -1,0 +1,471 @@
+@import "tailwindcss";
+
+/*
+ * As variáveis --yt-* são geradas a partir de src/design/design-tokens.json
+ * (ver src/design/tokens.ts) e aplicadas no <html>. Aqui elas viram utilitários.
+ */
+@theme inline {
+  --color-background: var(--yt-background);
+  --color-surface: var(--yt-surface);
+  --color-surface-alt: var(--yt-surface-alt);
+  --color-ink: var(--yt-text);
+  --color-muted: var(--yt-text-muted);
+  --color-primary: var(--yt-primary);
+  --color-primary-contrast: var(--yt-primary-contrast);
+  --color-secondary: var(--yt-secondary);
+  --color-accent: var(--yt-accent);
+  --color-line: var(--yt-border);
+
+  --font-display: var(--yt-font-display);
+  --font-sans: var(--yt-font-body);
+  --font-mono: var(--yt-font-detail);
+
+  --radius-card: var(--yt-radius-card);
+  --radius-image: var(--yt-radius-image);
+  --radius-pill: var(--yt-radius-button);
+
+  --shadow-card: var(--yt-shadow-card);
+}
+
+/* ------------------------------------------------------------------ */
+/* Base                                                                */
+/* ------------------------------------------------------------------ */
+
+@layer base {
+  html {
+    background: var(--yt-background);
+    color: var(--yt-text);
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    min-height: 100%;
+    font-family: var(--yt-font-body);
+    font-size: var(--yt-text-body);
+    line-height: var(--yt-leading-body);
+    background: var(--yt-background);
+    color: var(--yt-text);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: clip;
+  }
+
+  ::selection {
+    background: var(--yt-primary);
+    color: var(--yt-primary-contrast);
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--yt-accent);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  [id] {
+    scroll-margin-top: 88px;
+  }
+
+  img {
+    max-width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Tipografia (design-partner.md)                                      */
+/* ------------------------------------------------------------------ */
+
+@layer components {
+  .type-h1 {
+    font-family: var(--yt-font-display);
+    font-weight: 500;
+    font-size: var(--yt-text-h1);
+    line-height: var(--yt-leading-display);
+    letter-spacing: -0.055em;
+  }
+
+  .type-h2 {
+    font-family: var(--yt-font-display);
+    font-weight: 500;
+    font-size: var(--yt-text-h2);
+    line-height: var(--yt-leading-heading);
+    letter-spacing: -0.04em;
+    text-wrap: balance;
+  }
+
+  .type-h3 {
+    font-family: var(--yt-font-display);
+    font-weight: 500;
+    font-size: var(--yt-text-h3);
+    line-height: 1.08;
+    letter-spacing: -0.025em;
+    text-wrap: balance;
+  }
+
+  .type-h4 {
+    font-family: var(--yt-font-display);
+    font-weight: 500;
+    font-size: clamp(1.2rem, 1.7vw, 1.5rem);
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+  }
+
+  .type-small {
+    font-size: var(--yt-text-small);
+    line-height: 1.35;
+  }
+
+  .eyebrow {
+    font-family: var(--yt-font-detail);
+    font-weight: 500;
+    font-size: var(--yt-text-small);
+    line-height: 1.35;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .container-editorial {
+    width: min(1180px, 100% - 32px);
+    margin-inline: auto;
+  }
+
+  @media (min-width: 768px) {
+    .container-editorial {
+      width: min(1180px, 100% - 48px);
+    }
+  }
+
+  /* Vidro: somente header e cards grandes. */
+  .glass {
+    background: rgb(255 253 249 / 0.72);
+    -webkit-backdrop-filter: blur(18px);
+    backdrop-filter: blur(18px);
+  }
+
+  .texture-noise {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.16 0 0 0 0 0.145 0 0 0 0 0.133 0 0 0 0.16 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .texture-lines {
+    background-image: repeating-linear-gradient(
+      -45deg,
+      transparent 0 11px,
+      rgb(107 75 62 / 0.09) 11px 12px
+    );
+  }
+
+  /* Letras vazadas (decorativo, marquee do mobile). */
+  .text-outline {
+    color: transparent;
+    -webkit-text-stroke: 1px var(--yt-primary);
+  }
+
+  .aurora {
+    background:
+      var(--yt-gradient-glow),
+      radial-gradient(circle at 12% 88%, rgb(168 168 154 / 0.28), transparent 46%),
+      var(--yt-background);
+  }
+
+  /* Máscara por palavra (split do H1). */
+  .word-mask {
+    display: inline-block;
+    overflow: clip;
+    padding-block: 0.08em 0.12em;
+    margin-block: -0.08em -0.12em;
+    padding-inline: 0.04em;
+    margin-inline: -0.04em;
+    vertical-align: top;
+  }
+
+  .word-mask > span {
+    display: inline-block;
+    will-change: transform;
+  }
+
+  .skip-link {
+    position: fixed;
+    left: 16px;
+    top: 12px;
+    z-index: 100;
+    padding: 12px 18px;
+    border-radius: var(--yt-radius-button);
+    background: var(--yt-primary);
+    color: var(--yt-primary-contrast);
+    font-weight: 600;
+    transform: translateY(-160%);
+  }
+
+  .skip-link:focus-visible {
+    transform: none;
+  }
+
+  /* Botões (design-partner.md) */
+  .btn {
+    display: inline-flex;
+    min-height: 48px;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 24px;
+    border-radius: var(--yt-radius-button);
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1.2;
+    border: 1px solid transparent;
+    transition:
+      transform var(--yt-duration-fast) ease,
+      box-shadow var(--yt-duration-fast) ease,
+      background-color var(--yt-duration-fast) ease,
+      color var(--yt-duration-fast) ease;
+  }
+
+  .btn:focus-visible {
+    outline: none;
+    box-shadow: var(--yt-shadow-focus);
+  }
+
+  .btn-primary {
+    background: var(--yt-primary);
+    color: var(--yt-primary-contrast);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--yt-primary);
+    border-color: var(--yt-primary);
+  }
+
+  .btn-inverse {
+    background: var(--yt-primary-contrast);
+    color: var(--yt-primary);
+  }
+
+  @media (hover: hover) {
+    .btn-primary:hover,
+    .btn-inverse:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--yt-shadow-card);
+    }
+
+    .btn-secondary:hover {
+      background: var(--yt-surface-alt);
+    }
+  }
+
+  .link-underline {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 1px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size var(--yt-duration-base) ease;
+  }
+
+  @media (hover: hover) {
+    .link-underline:hover {
+      background-size: 100% 1px;
+    }
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Estado inicial do hero — só existe com JS e com movimento permitido */
+/* (classe `js` aplicada no <head>; `motion-fallback` libera tudo se o */
+/* JS demorar). Sem JS o conteúdo começa visível.                      */
+/* ------------------------------------------------------------------ */
+
+@media (prefers-reduced-motion: no-preference) {
+  html.js:not([data-hero-done]):not(.motion-fallback) [data-hero-word] {
+    transform: translate3d(0, 110%, 0);
+  }
+
+  html.js:not([data-hero-done]):not(.motion-fallback) [data-hero-fade] {
+    opacity: 0;
+  }
+
+  html.js:not([data-hero-done]):not(.motion-fallback) [data-hero-tile] {
+    clip-path: inset(50% 50% 50% 50% round 999px);
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Hero → pilares (camada fixa; o GSAP controla clip-path e opacidade) */
+/* ------------------------------------------------------------------ */
+
+.pillars-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.pillar {
+  position: absolute;
+  inset: 0;
+  clip-path: inset(50% 50% 50% 50%);
+}
+
+/* Caneluras verticais da coluna. */
+.pillar-fluting {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  background-image: repeating-linear-gradient(
+    90deg,
+    rgb(41 37 34 / 0.12) 0 1px,
+    transparent 1px 20px,
+    rgb(255 253 249 / 0.12) 20px 21px,
+    transparent 21px 40px
+  );
+}
+
+/* Capitel (topo) e base da coluna. */
+.pillar-capital,
+.pillar-base {
+  position: absolute;
+  inset-inline: 0;
+  opacity: 0;
+  background: rgb(41 37 34 / 0.14);
+  box-shadow: inset 0 -1px 0 rgb(255 253 249 / 0.25);
+}
+
+.pillar-capital {
+  top: 0;
+  height: clamp(28px, 5vh, 56px);
+}
+
+.pillar-base {
+  bottom: 0;
+  height: clamp(36px, 7vh, 72px);
+}
+
+.pillar-label {
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-family: var(--yt-font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 1.75rem;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  transform-origin: 50% 50%;
+}
+
+@media (min-width: 1024px) {
+  .pillar-label {
+    font-size: clamp(2.5rem, 4.5vw, 4.5rem);
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Header                                                              */
+/* ------------------------------------------------------------------ */
+
+.site-header {
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.site-header[data-hidden="true"]:not(:focus-within) {
+  transform: translateY(-110%);
+}
+
+.site-header__bg {
+  opacity: 0;
+  transform: scaleY(1.12);
+  transform-origin: top;
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.site-header__inner {
+  transform: translateY(8px);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.site-header[data-scrolled="true"] .site-header__bg {
+  opacity: 1;
+  transform: scaleY(0.89);
+}
+
+.site-header[data-scrolled="true"] .site-header__inner {
+  transform: translateY(-4px);
+}
+
+.progress-bar {
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+/* Menu mobile: stagger curto via CSS */
+.mobile-menu {
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.3s ease,
+    visibility 0s linear 0.3s;
+}
+
+.mobile-menu[data-open="true"] {
+  opacity: 1;
+  visibility: visible;
+  transition:
+    opacity 0.3s ease,
+    visibility 0s;
+}
+
+.mobile-menu__item {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.35s ease,
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: calc(var(--i, 0) * 50ms + 80ms);
+}
+
+.mobile-menu[data-open="true"] .mobile-menu__item {
+  opacity: 1;
+  transform: none;
+}
+
+/* Filtros do grid (só aparecem com conteúdo suficiente) */
+.content-grid[data-filter="reel"] > [data-type]:not([data-type="reel"]),
+.content-grid[data-filter="post"] > [data-type]:not([data-type="post"]) {
+  display: none;
+}
+
+.content-grid[data-filter]:not([data-filter="all"]) {
+  grid-auto-flow: dense;
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* ------------------------------------------------------------------ */
+/* Movimento reduzido                                                  */
+/* ------------------------------------------------------------------ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+    scroll-behavior: auto !important;
+  }
+}
